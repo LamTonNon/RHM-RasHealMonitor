@@ -13,7 +13,7 @@
 #define LEVEL_4 0x06
 #define LEVEL_5 0x08
 #define LEVEL_6 0x09
-#define LEVEL_7 0x01
+#define LEVEL_7 0x0A
 
 
 

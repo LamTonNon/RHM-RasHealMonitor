@@ -22,13 +22,12 @@ target_include_directories(fan_api_lib
 ############################################################
 
 # Add an executable with the above sources
-add_executable(fan_controler_binary
+add_executable(cooler_service
     src/main.c
 )
 
-# link the new fan_api_lib target with the fan_controler_binary target
-target_link_libraries( fan_controler_binary
-     
+# link the new fan_api_lib target with the cooler_service target
+target_link_libraries( cooler_service
     fanapi::library
     -l:libi2c.a
 )
