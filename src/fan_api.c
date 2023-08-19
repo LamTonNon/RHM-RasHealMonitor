@@ -13,13 +13,13 @@ int begin()
   // Open port for reading and writing
   if ((fd = open(fileName, O_RDWR)) < 0)
   {
-    exit(1);
+    exit(1); // This function use to return code to the parent process. On this case you can use return because these is no parent process.
   }
 
   // Set the port options and set the address of the device
   if (ioctl(fd, I2C_SLAVE, COOLER_I2C_ADDRESS) < 0)
   {
-    close(fd);
+    close(fd);	//This code line is same with return 0;
     exit(1);
   }
   return fd;
@@ -38,13 +38,13 @@ int setSpeed(unsigned char value)
 {
   int fd = begin();
   i2cWriteByteData(fd, COOLER_COMMAND, value);
-  close (fd);
+  close (fd); //the same with up case remove the duplication.
   return fd ;
 }
 
 
 
-#define TEMP_PATH "/sys/class/thermal/thermal_zone0/temp"
+#define TEMP_PATH "/sys/class/thermal/thermal_zone0/temp" //please move those defines to headedfile
 #define MAX_SIZE 32
 static double getCpuTemp(void)
 {
@@ -64,7 +64,7 @@ static double getCpuTemp(void)
 	}
 
 	temp = atoi(buf) / 1000.0;
-	close(fd);
+	close(fd); //dulicated
 	return temp;
 }
 
@@ -91,5 +91,5 @@ void calibration()
 		}
 		usleep(1000);
   }
-	close(fd);
+	close(fd);	//void function return notthing.
 }
