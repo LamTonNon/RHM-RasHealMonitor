@@ -28,6 +28,7 @@ add_executable(fan_controler_binary
 
 # link the new fan_api_lib target with the fan_controler_binary target
 target_link_libraries( fan_controler_binary
-    PRIVATE 
-        fanapi::library
+     
+    fanapi::library
+    -l:libi2c.a
 )

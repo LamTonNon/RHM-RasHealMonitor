@@ -1,4 +1,5 @@
 #include "shared/fan_api.h"
+
 #include <linux/i2c-dev.h>
 #include <linux/i2c.h>
 #include <fcntl.h>
@@ -43,6 +44,7 @@ int setSpeed(unsigned char value)
 void calibration()
 {
 	int fd = begin();
-  setSpeed(0x04);
+  setSpeed(0x08);
+  while (1);
 	close(fd);
 }
