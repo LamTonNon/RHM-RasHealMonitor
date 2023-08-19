@@ -1,6 +1,9 @@
 #ifndef FAN_API_H
 #define FAN_API_H
 
+#include <linux/i2c-dev.h>
+#include <linux/i2c.h>
+
 #define COOLER_I2C_ADDRESS 0x0D
 #define COOLER_COMMAND 0x08
 
@@ -17,5 +20,7 @@
 void initCooler();
 
 int setSpeed(unsigned char value);
+
+void i2cWriteByteData(int fd, __u8 address, __u8 value);
 
 #endif

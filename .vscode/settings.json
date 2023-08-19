@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "fan_api.h": "c",
+        "i2c-dev.h": "c"
+    }
+}
