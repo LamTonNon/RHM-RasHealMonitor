@@ -13,6 +13,7 @@ int begin()
 	// Open port for reading and writing
 	if ((fd = open(fileName, O_RDWR)) < 0)
 	{
+		printf("ERROR: Open port for reading and writing");
 		exit(1);
 	}
 
@@ -20,6 +21,7 @@ int begin()
 	if (ioctl(fd, I2C_SLAVE, COOLER_I2C_ADDRESS) < 0)
 	{
 		close(fd);
+		printf("ERROR: Set the port options and set the address of the device");
 		exit(1);
 	}
 	return fd;
@@ -30,6 +32,7 @@ void i2cWriteByteData(int fd, __u8 address, __u8 value)
 	if (0 > i2c_smbus_write_byte_data(fd, address, value))
 	{
 		close(fd);
+		printf("ERROR: i2c smbus write byte data");
 		exit(1);
 	}
 }
